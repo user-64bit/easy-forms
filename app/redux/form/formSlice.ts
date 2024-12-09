@@ -1,5 +1,5 @@
 import { Question } from "@/app/components/form-builder/form-builder";
-import { Answer } from "@/app/components/submit-form/submit-form";
+import { Answer } from "@/app/types/answerType";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type FormState = {
