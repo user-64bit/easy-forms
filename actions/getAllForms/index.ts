@@ -8,6 +8,9 @@ export const getAllForms = async () => {
       questions: true,
       Answer: true,
     },
+    orderBy:{
+      createdAt: "desc"
+    }
   });
   console.log("data", data);
   return data;
