@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Form {
+  id        Int        @id @default(autoincrement())
+  title     String
+  questions Question[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Answer    Answer[]
+}
+
+model Question {
+  id          Int          @id @default(autoincrement())
+  title       String
+  helpText    String?
+  type        QuestionType
+  optionsList Option[]
+  Answer      Answer?
+  Form        Form?        @relation(fields: [formId], references: [id])
+  formId      Int?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Answer {
+  id         Int      @id @default(autoincrement())
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId Int      @unique
+  Form       Form?    @relation(fields: [formId], references: [id])
+  formId     Int?
+  answer     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Option {
+  id         Int      @id @default(autoincrement())
+  Question   Question @relation(fields: [questionId], references: [id])
+  questionId Int
+  option     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+enum QuestionType {
+  shortAnswer
+  longAnswer
+  singleSelect
+  date
+  url
+}
