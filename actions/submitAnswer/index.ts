@@ -18,7 +18,18 @@ export const submitAnswerAction = async ({
         answer: answer.answer,
       };
     });
-    console.log("updatedAnswers", updatedAnswers);
+    const checkIfFormExists = await db.answer.findFirst({
+      where: {
+        formId: formId,
+      },
+    });
+    if (checkIfFormExists) {
+      await db.answer.deleteMany({
+        where: {
+          formId: formId,
+        },
+      });
+    }
     const data = await db.answer.createMany({
       data: updatedAnswers,
     });

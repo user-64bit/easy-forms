@@ -12,6 +12,7 @@ import Header from "../../components/header/header";
 import Root from "../../components/root/root";
 import AppButton from "../app-button/app-button";
 import FormBuilderItem from "../form-builder-item/form-builder-item";
+import { useRouter } from "next/navigation";
 
 export interface Answer {
   id: number;
@@ -30,6 +31,7 @@ export default function SubmitForm({
   const answers = useAppSelector(
     (state) => state.persistedReducer.data.answers
   );
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const isAnswerValidated = (answers: Answer[]) => {
     const answerCopy = [...answers];
@@ -56,6 +58,7 @@ export default function SubmitForm({
         answers: answers,
       });
       dispatch(reset());
+      router.push("/show-all-forms");
       toast.success("Submitted successfully");
     }
   };
