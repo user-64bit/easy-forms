@@ -6,16 +6,18 @@ export default async function ShowAllForms() {
   console.log("data", allForms);
   return (
     <div className="w-full sm:w-[640px] mx-auto flex flex-col items-center justify-center">
-      {allForms.map((form) => {
-        return (
-          <FormCard
-            key={form.id}
-            title={form.title}
-            questions={form.questions.map((question) => question.title)}
-            answers={form.Answer.map((answer) => answer.answer)}
-          />
-        );
-      })}
+      <div className="mb-8">
+        {allForms.map((form) => {
+          return (
+            <FormCard
+              key={form.id}
+              title={form.title}
+              questions={form.questions.map((question) => question.title)}
+              answers={form.Answer.map((answer) => answer.answer)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -8,6 +8,8 @@ import AppButton from "../app-button/app-button";
 import FormBuilderItem from "../form-builder-item/form-builder-item";
 import { motion } from "framer-motion";
 import AddQuestionIcon from "@/public/icons/add-question";
+import { colors } from "@/app/assets/color";
+import { toast } from "react-toastify";
 
 export interface Question {
   id?: number;
@@ -176,6 +178,18 @@ export default function FormBuilder({
             title="Add Question"
             IconLeft={AddQuestionIcon}
             onClick={createQuestion}
+          />
+        </div>
+      )}
+      {previewMode && (
+        <div className="flex justify-end mt-[24px]">
+          <AppButton
+            title="Submit"
+            backgroundColor={colors["green-400"]}
+            textColor={colors["gray-00"]}
+            onClick={() => {
+              toast.success("Submitted successfully (Preview)");
+            }}
           />
         </div>
       )}
