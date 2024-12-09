@@ -153,11 +153,17 @@ export default function FormBuilderItem({
         <div className={`flex items-center ${previewMode ? "invisible" : ""}`}>
           <Dropdown
             options={OPTIONS}
-            SelectedIcon={OPTIONS[optionToIndex[question.type || "shortAnswer"]].icon}
+            SelectedIcon={
+              OPTIONS[optionToIndex[question.type || "shortAnswer"]].icon
+            }
             selectedOption={optionToIndex[question.type || "shortAnswer"]}
             handleOnClick={handleDropdownClick}
           />
-          <img src="/icons/reorder-icon.png" role="button" />
+          <img
+            src="/icons/reorder-icon.png"
+            role="button"
+            className="pointer-events-none"
+          />
         </div>
       </div>
 

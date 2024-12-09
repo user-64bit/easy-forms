@@ -15,7 +15,7 @@ export default function Dropdown({
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative bg-white z-[99999]">
-      <div className="flex" role="button" onClick={() => setIsOpen(!isOpen)}>
+      <div className="flex opacity-40" role="button" onClick={() => setIsOpen(!isOpen)}>
         <SelectedIcon />
         <img src="/icons/dropdown-icon.png" />
       </div>

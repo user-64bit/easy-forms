@@ -39,7 +39,7 @@ export default function AppButton({
     >
       {!isLoading ? (
         <>
-          <div>{IconLeft && <IconLeft />}</div>
+          <div className="mr-[4px]">{IconLeft && <IconLeft />}</div>
           <div
             className={`text-[14px] font-semibold`}
             style={{
