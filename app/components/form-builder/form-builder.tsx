@@ -24,7 +24,7 @@ const DropIndicator = ({ beforeId }: { beforeId: string | undefined }) => {
     <div
       data-before={beforeId || "-1"}
       data-column={"form-indicator"}
-      className="my-0.5 h-0.5 w-full bg-gray-200 opacity-0"
+      className="my-0.5 h-0.5 w-full bg-green-400 opacity-0"
     />
   );
 };
